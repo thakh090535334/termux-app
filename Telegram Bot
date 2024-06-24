@@ -1,0 +1,33 @@
+I import telebot
+from pytube import YouTube
+import os
+Replace "YOURTOKEN with your Bot's API token
+TOKEN 7461264107:AAFZwrQVddsPqV_6l77BJdKLl4Hy8eucYrc
+bot telebot. TeleBot (TOKEN)
+
+@bot.message_handler(commands=['start', 'help'])
+bot.reply_to(message, "Hi! Send me a YouTube Link and I will download the audio for you.")
+def send_welcome(message):
+@bot.message_handler(func-lambda message: True)
+def download_and_send_audio(message):
+url message.text
+audio=yt.streams.filter(only_audio-True).first()
+try:
+yt YouTube (url)
+if audio:
+Download and save the audio file
+download path audio.download()
+base, ext os.path.splitext(download_path)
+new file base.mp3
+os.rename(download_path, new_file)
+Sending the audio file
+audio file open(new_file, 'rb')
+bot.send audio(message.chat.id, audio_file)
+audio_file.close()
+#Optionally, remove the file after sending
+os.remove(new_file)
+else:
+    bot.reply_to(message, 'No downloadable audio found. except Exception as e:
+bot.reply_to(message, f'An error occurred: (e)')
+if__name__=='__main__':
+bot.polling()
